@@ -2,7 +2,7 @@
  app自动化，本代码是在真机上进行测试，测试的学习强国app和快手极速版。注意在测试前**先登录**app，并保持在**主页面**，本代码没有进行模拟登录。
 
 ## 配置
-1. 安装anoconda,安装uiautomator2和weditor两个python包
+1. 安装anoconda,安装<kbd>uiautomator2</kbd>和<kbd>weditor</kbd>两个python包
 2. 安装Android Studio,也可以只安装Android SDK然后配置环境
 
 ## CMD连接
