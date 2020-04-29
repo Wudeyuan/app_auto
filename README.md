@@ -1,5 +1,6 @@
 # app_auto
  app自动化，本代码是在真机上进行测试，测试的学习强国app和快手极速版。注意在测试前**先登录**app，并保持在**主页面**，本代码没有进行模拟登录。
+ \*号表示仅作了解。
 
 ## 配置
 1. 安装anoconda,安装<kbd>uiautomator2</kbd>和<kbd>weditor</kbd>两个python包
@@ -7,7 +8,7 @@
 
 ## 配置\*
 #### 网上也有不少用appium来调试，这里做简单的介绍。
-### 案例：用夜神模拟器打开学习强国（已登录）
+#### 案例：用夜神模拟器打开学习强国（已登录）
 - 配置
 1. 安装jdk，配置环境变量
 2. 安装anoconda，安装<kbd>Appium-Python-Client</kbd>包
@@ -45,8 +46,8 @@ driver = webdriver.Remote('http://localhost:4723/wd/hub', caps)
 2. 连接手机后，输入<kbd>python -m uiautomator2 init</kbd>对手机进行初始化
 3. 输入<kbd>python -m weditor</kbd>打开网页，输入（1）中获取的手机名进行连接，然后可逐步调试，**可视化界面**做得非常好。
 
-## python程序（[auto.py](https://github.com/Wudeyuan/app_auto/blob/master/app_auto.py)）
-#### 学习强国移动应用程序，刷文章和视频阅读（共24分）。代码包括一个函数和一个类。全程大约38分钟，可获得23-24分。
+## Python程序（[auto.py](https://github.com/Wudeyuan/app_auto/blob/master/app_auto.py)）
+#### 学习强国移动应用程序，文章和视频阅读（共24分）。代码包括一个函数和一个类。代码运行全程大约38分钟，可获得23-24分。
 - `rand()`函数。在手机运行过程中，暂停（`time.sleep()`）非常重要，`rand()`是为了让暂停时间长短稍显不同而设计（^-^其实就是让软件商更难监测，可能没啥用）。
 - `auto_app()`类，包含4个函数
 1. `read()`函数：文章阅读方式，首先循环遍历每个文章链接，然后滑动阅读，每次滑动暂停10s左右，每篇阅读110s左右。
