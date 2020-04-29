@@ -6,9 +6,9 @@
 2. 安装Android Studio,也可以只安装Android SDK然后配置环境
 
 ## CMD连接
-1. 输入`adb devices`查看是否连接上，连接上可获取手机名字
-2. 连接手机后，输入`python -m uiautomator2 init`对手机进行初始化
-3. 输入`python -m weditor`打开网页，输入（1）中获取的手机名进行连接，然后可逐步调试，**可视化界面**做得非常好。
+1. 输入<kbd>adb devices</kbd>查看是否连接上，连接上可获取手机名字
+2. 连接手机后，输入<kbd>python -m uiautomator2 init</kbd>对手机进行初始化
+3. 输入<kbd>python -m weditor</kbd>打开网页，输入（1）中获取的手机名进行连接，然后可逐步调试，**可视化界面**做得非常好。
 
 ## python程序（[auto.py](https://github.com/Wudeyuan/app_auto/blob/master/app_auto.py)）
 #### 学习强国移动应用程序，刷文章和视频阅读（共24分）。代码包括一个函数和一个类。全程大约38分钟，可获得23-24分。
