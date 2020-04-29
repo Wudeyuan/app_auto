@@ -10,7 +10,7 @@
 2. 连接手机后，输入`python -m uiautomator2 init`对手机进行初始化
 3. 输入`python -m weditor`打开网页，输入（1）中获取的手机名进行连接，然后可逐步调试，**可视化界面**做得非常好。
 
-## python程序（auto.py）
+## python程序（[auto.py](https://github.com/Wudeyuan/app_auto/blob/master/app_auto.py)）
 #### 学习强国移动应用程序，刷文章和视频阅读（共24分）。代码包括一个函数和一个类。全程大约38分钟，可获得23-24分。
 - `rand()`函数。在手机运行过程中，暂停（time.sleep）非常重要，`rand()`是为了让暂停时间长短稍显不同而设计（^-^其实就是让软件商更难监测，可能没啥用）。
 - `auto_app()`类，包含4个函数
