@@ -32,7 +32,7 @@
   "newCommandTimeout":"600"
 }
 ```
-4. <kbd>noReset</kbd>表示不要重置，登录后调试app时可以不用再登陆。<kbd>automationName</kbd>，网上教程很多没有这一项，但是不加这一项程序会报错，没有找到合适的解决办法，因此加上了（这一项会改变将默认的uiautomator2），<kbd>newCommandTimeout</kbd>表示无动作重置时间
+4. <kbd>noReset</kbd>表示不要重置，登录后调试app时可以不用再登陆。<kbd>automationName</kbd>，网上教程很多没有这一项，但是不加这一项程序会报错，没有找到合适的解决办法，因此加上了（这一项会改变将默认的uiautomator2），<kbd>newCommandTimeout</kbd>表示无动作重置时间。下面代码可以启动学习强国
 ```python
 # 需要保持appium服务在运行
 from appium import webdriver
