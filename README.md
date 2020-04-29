@@ -5,8 +5,43 @@
 1. 安装anoconda,安装<kbd>uiautomator2</kbd>和<kbd>weditor</kbd>两个python包
 2. 安装Android Studio,也可以只安装Android SDK然后配置环境
 
+## 配置\*
+#### 网上也有不少用appium来调试，这里做简单的介绍。
+### 案例：用夜神模拟器打开学习强国（已登录）
+- 配置
+1. 安装jdk，配置环境变量
+2. 安装anoconda，安装<kbd>Appium-Python-Client</kbd>包
+3. 安装Android Studio，配置环境变量（<kbd>ANDROID_HOME</kbd>和<kbd>Path</kbd>（...Sdk\platform-tools））
+4. 安装Appium
+5. 安装夜神模拟器，并用Android Studio里的<kbd>adb.exe</kbd>替换夜神的<kbd>nox_adb.exe</kbd>并更名（避免版本不兼容），安装学习强国
+6. 网上说还要安装node.js，没有安装也能跑，就没安装了
+- 连接
+1. 夜神运行app后，cmd输入<kbd>adb devices</kbd>连接获取手机名字
+2. 打开需要测试的app，cmd输入<kbd>adb shell dumpsys activity activities | grep mFocusedActivity</kbd>，获取当前Activity
+3. 打开appium软件，填写主机地址，端口不变，点击放大镜，配置后可以对app进行调试。配置如下：
+```python
+{
+  "platformName": "Android",
+  "platformVersion": "7.1.2",
+  "deviceName": "127.0.0.1:62025",
+  "appPackage": "cn.xuexi.android",
+  "appActivity": "com.alibaba.android.rimet.biz.home.activity.HomeActivity",
+  "automationName": "UiAutomator1",
+  "noReset": "true",
+  "newCommandTimeout":"600"
+}
+```
+4. <kbd>noReset</kbd>表示不要重置，登录后调试app时可以不用再登陆。<kbd>automationName</kbd>，网上教程很多没有这一项，但是不加这一项程序会报错，没有找到合适的解决办法，因此加上了（这一项会改变将默认的uiautomator2），<kbd>newCommandTimeout</kbd>表示无动作重置时间
+```python
+# 需要保持appium服务在运行
+from appium import webdriver
+caps = {} # (3)中的内容
+driver = webdriver.Remote('http://localhost:4723/wd/hub', caps)
+# 接下来进行xpath定位，driver.tap点击和driver.swipe滑动
+```
+
 ## CMD连接
-1. 输入<kbd>adb devices</kbd>查看是否连接上，连接上可获取手机名字
+1. usb连接手机（开发模式）后，输入<kbd>adb devices</kbd>查看是否连接上，连接上可获取手机名字
 2. 连接手机后，输入<kbd>python -m uiautomator2 init</kbd>对手机进行初始化
 3. 输入<kbd>python -m weditor</kbd>打开网页，输入（1）中获取的手机名进行连接，然后可逐步调试，**可视化界面**做得非常好。
 
