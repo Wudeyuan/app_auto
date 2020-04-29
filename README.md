@@ -20,7 +20,7 @@
 1. 夜神运行app后，cmd输入<kbd>adb devices</kbd>连接获取手机名字
 2. 打开需要测试的app，cmd输入<kbd>adb shell dumpsys activity activities | grep mFocusedActivity</kbd>，获取当前Activity
 3. 打开appium软件，填写主机地址，端口不变，点击放大镜，配置后可以对app进行调试。配置如下：
-```python
+```
 {
   "platformName": "Android",
   "platformVersion": "7.1.2",
@@ -33,7 +33,7 @@
 }
 ```
 4. <kbd>noReset</kbd>表示不要重置，登录后调试app时可以不用再登陆。<kbd>automationName</kbd>，网上教程很多没有这一项，但是不加这一项程序会报错，没有找到合适的解决办法，因此加上了（这一项会改变将默认的uiautomator2），<kbd>newCommandTimeout</kbd>表示无动作重置时间。下面代码可以启动学习强国
-```python
+```
 # 需要保持appium服务在运行
 from appium import webdriver
 caps = {} # (3)中的内容
