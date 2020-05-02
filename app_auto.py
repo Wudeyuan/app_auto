@@ -77,7 +77,9 @@ class auto_app():
           
 if __name__ == "__main__":
     A=True; B=False
-    d=u2.connect('872QEDU822KP4')
+    d=u2.connect('872QEDU822KP4') # usb连接
+    # d=u2.connect('192.168.31.91:8971') # wifi连接
+    # 端口可以连接usb时在cmd中设置 adb tcpip 5566 
     read=auto_app()
     beign = datetime.datetime.today()
     if B:
