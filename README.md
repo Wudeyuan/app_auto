@@ -6,7 +6,7 @@
 1. 安装anoconda,安装<kbd>uiautomator2</kbd>和<kbd>weditor</kbd>两个python包
 2. 安装Android Studio,也可以只安装Android SDK然后配置环境
 
-## CMD连接
+## CMD初始化
 1. usb连接手机（开发模式）后，输入<kbd>adb devices</kbd>查看是否连接上，连接上可获取手机名字
 2. 连接手机后，输入<kbd>python -m uiautomator2 init</kbd>对手机进行初始化
 3. 输入<kbd>python -m weditor</kbd>打开网页，输入（1）中获取的手机名进行连接，然后可逐步调试，可视化界面做得非常好。
