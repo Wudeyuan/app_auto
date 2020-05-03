@@ -1,4 +1,5 @@
 # 需要多订阅使得每天有足量的当日文章，文章选取是在订阅模块
+# d.click()里面位置虽然是百分比，但是不同的手机位置可能还是有区别的，需要自己调试“返回”等在哪
 import time
 import datetime
 import random
@@ -36,13 +37,13 @@ class auto_app():
         time.sleep(rand(2))
         articlelist1=d.xpath("//*[@text='%s']" % self.date_now).all() # 跟selenium有所不同
         print("阅读文章：",len(articlelist1))
-        self.read(articlelist1,10) # 阅读
+        self.read(articlelist1,11) # 阅读
         time.sleep(rand(2))
         x1=800
         [d.swipe(x1,rand(1000),x1,rand(400)) for x in range(2)]
         articlelist0=d.xpath("//*[@text='%s']" % self.date_now).all()
         print("阅读文章：",len(articlelist0[-(6-len(articlelist1)):]))
-        self.read(set(articlelist0[-(6-len(articlelist1)):]),12)
+        self.read(set(articlelist0[-(6-len(articlelist1)):]),11)
         time.sleep(rand(2))       
     # 看视频 (联播频道)
     # 视频观看方式
@@ -77,9 +78,10 @@ class auto_app():
           
 if __name__ == "__main__":
     A=True; B=False
-    d=u2.connect('872QEDU822KP4') # usb连接
-    # d=u2.connect('192.168.31.91:8971') # wifi连接
+    # d=u2.connect('192.168.31***:89**') # wifi连接
     # 端口可以连接usb时在cmd中设置 adb tcpip 5566 
+    # wifi连接不上时，可以先连接usb启动
+    d=u2.connect('872QEDU8****') # 手机名字
     read=auto_app()
     beign = datetime.datetime.today()
     if B:
@@ -92,3 +94,4 @@ if __name__ == "__main__":
         read.article()
         read.video()
     print(datetime.datetime.today()-beign)
+ 
