@@ -4,7 +4,7 @@
 
 ## 配置
 1. 安装anoconda,安装<kbd>uiautomator2</kbd>和<kbd>weditor</kbd>两个python包
-2. 安装Android Studio,也可以只安装Android SDK然后配置环境
+2. 安装Android Studio,也可以只安装Android SDK然后配置环境。<kbd>cmd</kbd>中输入adb不出错即可
 
 ## CMD初始化
 1. usb连接手机（开发模式）后，输入<kbd>adb devices</kbd>查看是否连接上，连接上可获取手机名字
@@ -12,7 +12,7 @@
 3. 输入<kbd>python -m weditor</kbd>打开网页，输入（1）中获取的手机名进行连接，然后可逐步调试，可视化界面做得非常好。
 
 ## Python程序（[auto.py](https://github.com/Wudeyuan/app_auto/blob/master/app_auto.py)）
-#### 学习强国移动应用程序，文章和视频阅读（共24分）。代码包括一个函数和一个类。代码运行全程大约35分钟，可获得23-24分。
+#### 学习强国移动应用程序，文章和视频阅读（共24分）。代码包括一个函数和一个类。代码运行全程大约34分钟，可获得23-24分。
 - `rand()`函数。在手机运行过程中，暂停（`time.sleep()`）非常重要，`rand()`是为了让暂停时间长短稍显不同而设计（^-^其实就是让软件商更难监测，可能没啥用）。
 - `auto_app()`类，包含4个函数
 1. `read()`函数：文章阅读方式，首先循环遍历每个文章链接，然后滑动阅读，每次滑动暂停10s左右，每篇阅读110s左右。
