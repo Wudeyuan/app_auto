@@ -9,14 +9,14 @@ import uiautomator2 as u2
 # 让时间有个范围
 def rand(x):
     return x*random.randint(90,110)/100  
-
+    
 class auto_app():
     # 今天，昨天
     def __init__(self):
         today = datetime.datetime.today().date()
         self.date_now = str(today)
         self.date_yesterday = str(today-datetime.timedelta(days=1))     
-    # 看文章
+    # 看文章（订阅）
     # 文章阅读方式
     def read(self,list,times): # 阅读driver链接列表，阅读时间10*(time+1)秒
         for i in list:
@@ -27,7 +27,31 @@ class auto_app():
                 d.swipe(x1,rand(1000),x1,rand(700)) # swipe移动,向下滑
                 time.sleep(rand(10))
             d.click(rand(0.073), rand(0.073)) # 阅读后返回
-            time.sleep(rand(2))      
+            time.sleep(rand(2))    
+    # 收藏转发评论
+    def mix(self,mix_article):
+        for i in list:
+            # 由于模式固定，就直接简单的点点点
+            i.click()
+            time.sleep(rand(3))
+            d.click(0.773, 0.924) # 收藏
+            time.sleep(rand(1))
+            d.click(0.913, 0.924) # 分享
+            d(textContains="分享到学习").click(timeout=4)
+            time.sleep(rand(1))
+            d(text="学习交流群").click(timeout=4)
+            time.sleep(rand(1))
+            d(text="发送").click(timeout=4)
+            time.sleep(rand(2))
+            d.click(0.316, 0.93) # 评论
+            time.sleep(rand(1.5))
+            d.send_keys("努力学习，")
+            d.send_keys("爱国强国，振兴祖国")
+            d.click(0.917, 0.79)
+            time.sleep(rand(2))
+            d.click(rand(0.073), rand(0.073)) # 阅读后返回
+            time.sleep(rand(2))    
+    # 获取链接
     def article(self):
         time.sleep(rand(2))
         d.click(0.934, 0.137)
@@ -38,6 +62,8 @@ class auto_app():
         time.sleep(rand(2))
         articlelist1=d.xpath("//*[@text='%s']" % self.date_now).all() # 跟selenium有所不同
         print("阅读文章：",len(articlelist1))
+        mix_article=articlelist1[0:2]
+        self.mix(mix_article=mix_article)
         self.read(articlelist1,11) # 阅读
         time.sleep(rand(2))
         x1=800
@@ -48,7 +74,7 @@ class auto_app():
         time.sleep(rand(2))       
     # 看视频 (联播频道)
     # 视频观看方式
-    def watch(self,list,times1): # time*10秒
+    def watch(self,list,times1): # time*10秒       
         for i in list:          
             i.click()
             time.sleep(rand(10))
@@ -60,6 +86,7 @@ class auto_app():
                     break
             d.click(rand(0.073), rand(0.073)) # 返回
             time.sleep(rand(2))
+    # 获取链接        
     def video(self):
         time.sleep(rand(2))
         d.xpath("//*[@text='电视台']").click()
@@ -82,7 +109,7 @@ if __name__ == "__main__":
     # d=u2.connect('192.168.31***:89**') # wifi连接
     # 端口可以连接usb时在cmd中设置 adb tcpip 5566 
     # wifi连接不上时，可以先连接usb启动
-    d=u2.connect('872QEDU8****') # 手机名字
+    d=u2.connect('872QEDU822KP4') # 手机名字
     read=auto_app()
     beign = datetime.datetime.today()
     if B:
@@ -91,8 +118,13 @@ if __name__ == "__main__":
             time.sleep(rand(5))        
             d.swipe(rand(800),rand(600),rand(800),rand(200))
     if A:
-        d.app_start('cn.xuexi.android')       
+        d.app_start('cn.xuexi.android')
+        time.sleep(rand(2))
+        d.click(0.934, 0.137)
+        time.sleep(1)
+        d.xpath("//*[@text='北京']").click()
+        d(text="北京学习平台").click(timeout=3)
+        d.click(rand(0.073), rand(0.073))       
         read.article()
         read.video()
     print(datetime.datetime.today()-beign)
- 
