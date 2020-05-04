@@ -34,27 +34,27 @@ class auto_app():
             # 由于模式固定，就直接简单的点点点
             i.click()
             time.sleep(rand(3))
-            d.click(0.773, 0.924) # 收藏
+            d.click(rand(0.773), rand(0.924)) # 收藏
             time.sleep(rand(1))
-            d.click(0.913, 0.924) # 分享
+            d.click(rand(0.913), rand(0.924)) # 分享
             d(textContains="分享到学习").click(timeout=4)
             time.sleep(rand(1))
             d(text="学习交流群").click(timeout=4)
             time.sleep(rand(1))
             d(text="发送").click(timeout=4)
             time.sleep(rand(2))
-            d.click(0.316, 0.93) # 评论
+            d.click(rand(0.316), rand(0.93)) # 评论
             time.sleep(rand(1.5))
             d.send_keys("努力学习，")
             d.send_keys("爱国强国，振兴祖国")
-            d.click(0.917, 0.79)
+            d.click(rand(0.917), rand(0.79))
             time.sleep(rand(2))
             d.click(rand(0.073), rand(0.073)) # 阅读后返回
             time.sleep(rand(2))    
     # 获取链接
     def article(self):
         time.sleep(rand(2))
-        d.click(0.934, 0.137)
+        d.click(rand(0.934), rand(0.137))
         time.sleep(1)
         d.xpath("//*[@text='订阅']").click()
         time.sleep(rand(1))
@@ -109,7 +109,7 @@ if __name__ == "__main__":
     # d=u2.connect('192.168.31***:89**') # wifi连接
     # 端口可以连接usb时在cmd中设置 adb tcpip 5566 
     # wifi连接不上时，可以先连接usb启动
-    d=u2.connect('872QEDU822KP4') # 手机名字
+    d=u2.connect('872QEDU822***') # 手机名字
     read=auto_app()
     beign = datetime.datetime.today()
     if B:
@@ -120,7 +120,7 @@ if __name__ == "__main__":
     if A:
         d.app_start('cn.xuexi.android')
         time.sleep(rand(2))
-        d.click(0.934, 0.137)
+        d.click(rand(0.934), rand(0.137))
         time.sleep(1)
         d.xpath("//*[@text='北京']").click()
         d(text="北京学习平台").click(timeout=3)
