@@ -5,7 +5,7 @@
 
 ## 配置
 1. 安装anoconda,安装<kbd>uiautomator2</kbd>和<kbd>weditor</kbd>两个python包
-2. 安装Android Studio,也可以只安装Android SDK然后配置环境。<kbd>cmd</kbd>中输入adb不出错即可
+2. 安装Android Studio,也可以只安装SDK Platform Tools然后配置系统环境。<kbd>cmd</kbd>中输入adb不出错即可
 
 ## CMD初始化
 1. usb连接手机（开发模式）后，输入<kbd>adb devices</kbd>查看是否连接上，连接上可获取手机名字
