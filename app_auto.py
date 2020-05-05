@@ -13,6 +13,7 @@ def rand(x):
     return x*random.randint(90,110)/100  
     
 class auto_app():
+    
     # 今天，昨天
     def __init__(self):
         today = datetime.datetime.today().date()
@@ -22,8 +23,9 @@ class auto_app():
     # 点击返回
     def back(self):
         d.click(0.073, 0.073) # 阅读后返回.......................
-        time.sleep(rand(2))         
-    # 看文章（订阅）
+        time.sleep(rand(2))
+        
+    #------------------------------ 看文章（订阅）------------------------------#
     # 文章阅读方式
     def read(self,list,times): # 阅读driver链接列表，阅读时间10*(time+1)秒
         for i in list:
@@ -55,7 +57,7 @@ class auto_app():
             d(text="发布").click(timeout=4)
             time.sleep(rand(2))
             self.back()    
-    # 获取链接
+    # 获取链接并阅读
     def article(self):
         time.sleep(rand(3))
         d.click(0.934, 0.137) # 右上角的那几杠.......................
@@ -64,7 +66,7 @@ class auto_app():
         time.sleep(rand(1))
         d.xpath("//*[@text='订阅']").click()
         time.sleep(rand(2))
-        articlelist1=d.xpath("//*[@text='%s']" % self.date_now).all() # 跟selenium有所不同
+        articlelist1=d.xpath("//*[@text='%s']" % self.date_now).all() # 跟selenium语法有所不同
         print("阅读文章：",len(articlelist1))
         mix_article=articlelist1[0:2]
         self.mix(mix_article=mix_article)
@@ -74,8 +76,9 @@ class auto_app():
         articlelist0=d.xpath("//*[@text='%s']" % self.date_now).all()
         print("阅读文章：",len(articlelist0[-(6-len(articlelist1)):]))
         self.read(set(articlelist0[-(6-len(articlelist1)):]),11)
-        time.sleep(rand(2))       
-    # 看视频 (联播频道)
+        time.sleep(rand(2))
+        
+    #------------------------------看视频 (联播频道)------------------------------#
     # 视频观看方式
     def watch(self,list,times1): # time*10秒       
         for i in list:          
@@ -85,10 +88,10 @@ class auto_app():
             while (not d.xpath("//*[@text='重新播放']").exists): # 不出现“重新播放”，持续观看
                 k=k+1
                 time.sleep(rand(10))
-                if k>times1: # 大于time*10s，停止观看
+                if k>times1: # 大于time1*10s，停止观看
                     break
             self.back()
-    # 获取链接        
+    # 获取链接并观看        
     def video(self):
         time.sleep(rand(2))
         d.xpath("//*[@text='电视台']").click()
@@ -97,11 +100,11 @@ class auto_app():
         time.sleep(rand(5))
         videolist0=d.xpath("//*[@text='%s']" % self.date_yesterday).all()
         print("观看视频：",len(videolist0))
-        self.watch(videolist0,45)
+        self.watch(videolist0,45) # 这里面有新闻联播，如果发现视频刷的时间总短了一些，可以增加第二个参数的值
         time.sleep(rand(2))
-        [d.swipe(rand(self.x1),rand(1000),rand(self.x1),rand(460)) for x in range(2)] # 能够获取更多的driver
+        [d.swipe(rand(self.x1),rand(1000),rand(self.x1),rand(460)) for x in range(2)] # 滑动屏幕获取更多的链接
         time.sleep(rand(1))
-        videolist=d.xpath("//*[@text='%s']" % self.date_yesterday).all() # 跟selenium有所不同
+        videolist=d.xpath("//*[@text='%s']" % self.date_yesterday).all() # 跟selenium语法有所不同
         print("观看视频：",len(videolist[-(6-len(videolist0)):]))
         self.watch(set(videolist[-(6-len(videolist0)):]),36)
           
