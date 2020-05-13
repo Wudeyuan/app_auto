@@ -55,7 +55,17 @@ class auto_app():
             d.send_keys("爱国强国，振兴祖国")
             d(text="发布").click(timeout=4)
             time.sleep(rand(2))
-            self.back()    
+            self.back()
+    # 打开本地频道    
+    def local(self):
+        time.sleep(rand(2))
+        d.click(0.934, 0.137) # 右上角的那几杠.......................
+        time.sleep(rand(2))
+        d.xpath("//*[@text='北京']").click() # 本地频道，不同地区会所有不同.......................
+        time.sleep(rand(1))
+        d(text="北京学习平台").click(timeout=3) # 本地频道，不同地区会所有不同.......................
+        time.sleep(rand(2))
+        read.back()
     # 获取链接并阅读
     def article(self):
         time.sleep(rand(3))
@@ -63,21 +73,22 @@ class auto_app():
         time.sleep(1)
         d.xpath("//*[@text='订阅']").click()
         time.sleep(rand(1))
-        d.xpath("//*[@text='订阅']").click()
+        d.xpath("//*[@text='订阅']").click() # 订阅界面
         time.sleep(rand(1))
         d.swipe(rand(self.x1),rand(700),rand(self.x1),rand(1000)) # 刷新一下，一般不需要，但有时候会出问题 
         time.sleep(rand(2))
         articlelist1=d.xpath("//*[contains(@text,'%s')]" % self.date_mon).all() # 跟selenium语法有所不同
         print("阅读文章：",len(articlelist1))
         mix_article=articlelist1[0:2]
-        self.mix(mix_article=mix_article)
+        self.mix(mix_article=mix_article) # 前两篇文章，收藏、转发、评论
         self.read(articlelist1,11) # 阅读
         time.sleep(rand(2))
-        [d.swipe(rand(self.x1),rand(1000),rand(self.x1),rand(400)) for x in range(3)]
+        [d.swipe(rand(self.x1),rand(1000),rand(self.x1),rand(400)) for x in range(3)] # 下滑获取新文章
         articlelist0=d.xpath("//*[contains(@text,'%s')]" % self.date_mon).all()
         print("阅读文章：",len(articlelist0[-(6-len(articlelist1)):]))
         self.read(set(articlelist0[-(6-len(articlelist1)):]),11)
         time.sleep(rand(2))
+        self.local() # 本地频道
         
     #------------------------------看视频 (联播频道)------------------------------#
     # 视频观看方式
@@ -114,7 +125,7 @@ if __name__ == "__main__":
     # d=u2.connect('192.168.31***:89**') # wifi连接
     # 端口可以连接usb时在cmd中设置 adb tcpip 5566 
     # wifi连接不上时，可以先连接usb启动，再尝试wifi连接
-    d=u2.connect('872QEDU822KP4') # 手机名字.......................
+    d=u2.connect('872QEDU822K**') # 手机名字.......................
     read=auto_app()
     beign = datetime.datetime.today()
     if B:
@@ -123,16 +134,7 @@ if __name__ == "__main__":
             time.sleep(rand(5))        
             d.swipe(rand(800),rand(600),rand(800),rand(200))
     if A:
-        d.app_start('cn.xuexi.android') # 学习强国
-        time.sleep(rand(2))
-        d.click(0.934, 0.137) # 右上角的那几杠.......................
-        time.sleep(rand(2))
-        d.xpath("//*[@text='北京']").click() # 本地频道，不同地区会所有不同.......................
-        time.sleep(rand(1))
-        d(text="北京学习平台").click(timeout=3) # 本地频道，不同地区会所有不同.......................
-        time.sleep(rand(1))
-        d(text="推荐").click(timeout=10)
-        read.back()       
-        read.article()
+        d.app_start('cn.xuexi.android') # 学习强国      
+        read.article() 
         read.video()
     print(datetime.datetime.today()-beign)
