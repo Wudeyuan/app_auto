@@ -4,7 +4,7 @@
  - [x] "\*"号表示仅作了解。
 
 ## 配置
-1. 安装anoconda,安装<kbd>uiautomator2</kbd>和<kbd>weditor</kbd>两个python包
+1. 安装anoconda或只安装python（添加到系统环境）,安装<kbd>uiautomator2</kbd>和<kbd>weditor</kbd>两个python包
 2. 安装Android Studio,也可以只安装SDK Platform Tools然后配置系统环境。<kbd>cmd</kbd>中输入adb不出错即可
 
 ## CMD初始化
